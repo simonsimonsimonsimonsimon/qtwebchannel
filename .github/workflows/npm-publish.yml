@@ -1,0 +1,38 @@
+# This workflow will build an npm package out of qwebchannel.js
+
+name: Publish qwebchannel.js to npmjs.org
+
+on:
+  push:
+    paths:
+      - 'examples/webchannel/shared/qwebchannel.js'
+      - 'examples/webchannel/shared/package.json'
+
+jobs:
+  packnpublish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout qwebchannel.js
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: |
+            examples/webchannel/shared/qwebchannel.js
+            examples/webchannel/shared/package.json
+            README.md
+          sparse-checkout-cone-mode: false
+      - name: Cleanup package
+        run: |
+          cp examples/webchannel/shared/{qwebchannel.js,package.json} ./
+          rm -rf examples
+      - name: Setup nodejs/npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'          
+          registry-url: 'https://registry.npmjs.org'
+      #- name: Publish
+      #  run: npm publish --access public # later we can add --provenance
+      #  env:
+      #    NODE_AUTH_TOKEN: ${{secrets.npm_token}}

@@ -1,0 +1,19 @@
+{
+  "name"       : "@menlosystems/qwebchannel",
+  "version"    : "1.0.0",
+  "description": "This module provides an implementation of Qt's WebChannel protocol in JavaScript.",
+  "keywords"   : ["webchannel", "qt"],
+  "homepage"   : "https://github.com/MenloSystems/qtwebchannel#readme",
+  "bugs"       : { "url": "https://github.com/MenloSystems/qtwebchannel/issues" },
+  "license"    : "GPL-2.0-or-later OR LGPL-3.0-only", 
+  "author"     : {
+    "name" : "Arno Rehn",
+    "email": "a.rehn@menlosystems.com"
+  },
+  "files"      : [],
+  "main"       : "qwebchannel.js",
+  "repository" : {
+    "type": "git",
+    "url" : "https://github.com/MenloSystems/qtwebchannel.git"
+  }  
+}
